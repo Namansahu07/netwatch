@@ -1,5 +1,4 @@
-const BASE = '/api'
-
+const BASE = 'https://netwatch-backend-3aij.onrender.com/api'
 async function request(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
     headers: { 'Content-Type': 'application/json', ...options.headers },
@@ -41,7 +40,7 @@ export const api = {
 export function createWebSocket(sessionId, onMessage, onClose) {
   const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
   const host = window.location.host
-const ws = new WebSocket(`${protocol}://localhost:8000/ws/live/${sessionId}`)
+const ws = new WebSocket(`wss://netwatch-backend-3aij.onrender.com/ws/live/${sessionId}`)
 
   ws.onmessage = (e) => {
     try {
